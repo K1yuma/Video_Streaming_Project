@@ -1,105 +1,132 @@
+# 🎥 StreamFlow - Advanced Video Streaming & Live Broadcasting Platform
 
-# Video Streaming App
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-18.3-blue.svg)](https://reactjs.org/)
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)
+[![FFmpeg](https://img.shields.io/badge/FFmpeg-Processed-red.svg)](https://ffmpeg.org/)
+[![MediaMTX](https://img.shields.io/badge/MediaMTX-Live-lightgrey.svg)](https://github.com/bluenviron/mediamtx)
 
-This project is a robust video streaming platform built using Spring Boot for the backend and Vite React for the frontend. It allows users to upload, stream, and watch videos efficiently. The backend handles video processing, storage, and retrieval, ensuring smooth playback by implementing HLS (HTTP Live Streaming) for video delivery. Videos are stored in multiple quality formats, enabling adaptive streaming based on the user's network conditions. 
+**StreamFlow** is a comprehensive, full-stack video streaming platform designed for both On-Demand content and Live Broadcasting. Built with a focus on scalability and performance, it leverages modern technologies like Spring Boot, React, and FFmpeg to deliver a seamless streaming experience.
 
+---
 
-## Tech Stack
+## 🌟 Key Features
 
-**Backend:**
- 
- **Spring Boot:** For building the RESTful APIs and handling the backend logic.
-- **Java:** The primary programming language for the backend development.
-- **Hibernate/JPA:** For ORM (Object-Relational Mapping) and database interactions.
-- **MySQL/PostgreSQL:** As the relational database for storing video metadata and user information.
-- **ffmpeg:** For video processing, including transcoding and segmenting videos into HLS format.
-- **Maven:** For managing project dependencies and building the application.
+### 🎞️ Video On-Demand (VOD)
+- **High-Efficiency Upload:** Seamlessly upload large video files with robust backend handling.
+- **HLS Transcoding:** Automatic conversion of MP4 files into HLS (HTTP Live Streaming) format using FFmpeg, enabling adaptive bitrate streaming.
+- **Byte-Range Streaming:** Support for partial content requests, allowing users to seek instantly without downloading the entire file.
+- **Video Management:** Full CRUD operations for video metadata, including titles, descriptions, and categorized storage.
 
-**Frontend:** 
-- **Vite:** A modern frontend build tool for fast development and optimized production builds.
-- **React:** For building the interactive user interface.
-- **Tailwind CSS:** For styling the frontend with a utility-first approach.
-- **JavaScript:** For scripting and adding interactivity to the frontend.
+### 📡 Live Broadcasting
+- **Real-Time Streaming:** Integrated with **MediaMTX** for low-latency RTSP/RTMP/WebRTC/HLS live streaming.
+- **Stream Status Monitoring:** Real-time feedback on stream availability and health.
+- **Interactive Chat:** Built-in chat system for live broadcasts, allowing viewers to engage in real-time.
 
-**Other Tools and Technologies:**
-- **HLS (HTTP Live Streaming):** For adaptive bitrate streaming and efficient video delivery.
-- **RESTful APIs:** For communication between the frontend and backend.
-- **Git/GitHub:** For version control and collaboration.
-## API Reference
+### 🎨 Modern UI/UX
+- **Responsive Design:** Fully responsive interface built with Tailwind CSS and Flowbite.
+- **Advanced Video Player:** Custom player integration using `video.js` and `hls.js` for optimized playback across all browsers.
+- **Toasts & Notifications:** Real-time feedback for user actions via `react-hot-toast`.
 
-#### Upload Video
+---
 
-```http
-  POST /api/v1/videos
-```
+## 🛠️ Technology Stack
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `video_file, title, description ` | `Multipart, String, String` | **Required** All Fields |
+### Backend
+- **Framework:** Spring Boot 3.3.3 (Java 21)
+- **Database:** MySQL (Persistence for metadata)
+- **ORM:** Spring Data JPA / Hibernate
+- **Processing:** FFmpeg (HLS segmenting and transcoding)
+- **Messaging:** Custom REST-based Chat implementation
 
-#### Get All Videos
+### Frontend
+- **Framework:** React 18 (Vite)
+- **Styling:** Tailwind CSS, Flowbite
+- **Streaming:** HLS.js, Video.js
+- **API Client:** Axios
 
-```http
-  GET /api/v1/videos
-```
+### Infrastructure & Tools
+- **Media Server:** MediaMTX (RTSP/RTMP/HLS)
+- **Public Tunneling:** Cloudflare Tunnel (for remote testing)
+- **Build Tools:** Maven (Backend), NPM (Frontend)
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `none`      | `none` | It returns all Videos in the videos present  with title , description , file Path, etc |
+---
 
-#### Stream Videos
+## 🚀 Getting Started
 
-```http
-  GET /api/v1/videos/stream/{videoId}
-```
+### Prerequisites
+- **Java 21** installed.
+- **Node.js & NPM** installed.
+- **MySQL** server running.
+- **FFmpeg** installed and added to your system's PATH.
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `videoId`      | `String` | It return a video resource which load at once  |
+### Installation
 
-#### Stream Videos
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/Video-Streaming-Project.git
+   cd Video-Streaming-Project
+   ```
 
-```http
-  GET /api/v1/videos/stream/range/{videoId}
-```
+2. **Backend Setup:**
+   - Configure your MySQL credentials in `backend/src/main/resources/application.properties`.
+   - Run the backend:
+     ```bash
+     cd backend
+     ./mvnw spring-boot:run
+     ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `videoId`      | `String` | It return a video resource but it sent video in chunks not at once  |
+3. **Frontend Setup:**
+   - Install dependencies:
+     ```bash
+     cd frontend/video-streaming-app
+     npm install
+     ```
+   - Start the development server:
+     ```bash
+     npm run dev
+     ```
 
-#### Stream Videos
+4. **Media Server Setup:**
+   - Run the MediaMTX executable:
+     ```bash
+     cd mediamtx
+     ./mediamtx.exe
+     ```
 
-```http
-  GET /api/v1/videos/{videoId}/master.m3u8
-```
+---
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `videoId`      | `String` | It return a HLS master.m3u8 file which has information about video segments  |
+## 🏗️ Architecture Overview
 
-#### Fetch Video Segments
+The system architecture is designed for modularity and high availability:
 
-```http
-  GET /api/v1/videos/{videoId}/{segment}.ts
-```
+1.  **Frontend (React):** Communicates with the Spring Boot API for metadata and the MediaMTX server for live stream data.
+2.  **Backend (Spring Boot):** Orchestrates video processing tasks, manages the database, and provides chat functionality.
+3.  **FFmpeg:** Triggered by the backend to process uploaded videos into HLS segments (`.m3u8` and `.ts` files).
+4.  **MediaMTX:** Acts as the ingestion and distribution point for live broadcasts.
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `videoId, segment`      | `String,String` | It return a video segment|
+---
 
+## 📸 Screenshots
 
+*(Add your project screenshots here)*
 
-## Key features include:
+---
 
-- Video Uploading and Management: Users can upload videos, which are then processed and stored in a structured directory. Each video is assigned a unique identifier and saved with metadata, including title, description, and content type.
-- HLS Streaming: The platform uses ffmpeg to transcode uploaded videos into HLS format, segmenting them into smaller chunks for efficient delivery. It also serves the master playlist and individual segments to ensure smooth streaming.
-- Range Requests: The application supports byte-range requests, allowing videos to be streamed in chunks. This feature is crucial for fast-forwarding, rewinding, and buffering large videos.
-- Cross-Origin Resource Sharing (CORS): Configured to allow seamless interaction between the frontend and backend, ensuring smooth API calls and resource access.
+## 🔮 Future Enhancements
+- [ ] User Authentication & Authorization (OAuth2/JWT).
+- [ ] Multi-quality adaptive bitrate transcoding (360p, 720p, 1080p).
+- [ ] S3/Cloud Storage integration for video assets.
+- [ ] Live stream recording and DVR capabilities.
 
-The frontend, built with Vite React, provides a responsive and intuitive user interface, enabling users to interact with the platform smoothly. Tailwind CSS is used for styling, ensuring a modern and consistent look across different devices.
+---
 
-This project demonstrates a full-stack approach to building scalable video streaming applications, integrating video processing, storage, and real-time streaming capabilities.
+## 📧 Contact
 
+Your Name - [your.email@example.com](mailto:your.email@example.com)
 
-![Screenshot 2024-09-01 192501](https://github.com/user-attachments/assets/4dc41378-361a-4a5e-8de7-4d9e01a36d81)
-![Screenshot (339)](https://github.com/user-attachments/assets/47831679-ea84-455c-9469-3d35179df3e6)
+Project Link: [https://github.com/your-username/Video-Streaming-Project](https://github.com/your-username/Video-Streaming-Project)
+
+---
+*Created as part of a portfolio project to demonstrate full-stack engineering and multimedia processing capabilities.*

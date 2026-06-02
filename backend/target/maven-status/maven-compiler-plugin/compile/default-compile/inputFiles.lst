@@ -1,0 +1,10 @@
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\AppConstants.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\controllers\ChatController.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\controllers\VideoController.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\entities\Course.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\entities\Video.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\payload\CustomMessage.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\repositories\VideoRepository.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\services\ServiceImple\VideoServiceImpl.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\services\VideoService.java
+C:\project\streaming_web\Video-Streaming-Project\backend\src\main\java\com\app\streaming\VideoStreamingAppApplication.java
