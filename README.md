@@ -31,31 +31,24 @@ Một dự án full-stack cơ bản để tìm hiểu về streaming video và p
 
 ### 1. Điều kiện tiên quyết
 - Cài đặt **Java 21**.
-- Cài đặt **Node.js**.
+- Cài đặt **Node.js** (để chạy frontend).
 - Cài đặt **MySQL**.
 - Cài đặt **FFmpeg** (đảm bảo đã thêm vào đường dẫn hệ thống - system path).
 
 ### 2. Thiết lập Cơ sở dữ liệu
 - Tạo một database MySQL và cập nhật thông tin đăng nhập trong tệp `backend/src/main/resources/application.properties`.
 
-### 3. Chạy Backend
-```bash
-cd backend
-./mvnw spring-boot:run
-```
+### 3. Khởi động nhanh (Windows)
+Dự án đã có sẵn file script để khởi động tất cả các dịch vụ cùng lúc:
 
-### 4. Chạy Frontend
-```bash
-cd frontend/video-streaming-app
-npm install
-npm run dev
-```
+1. Mở thư mục dự án.
+2. Chạy file `start-all-dev.bat`.
 
-### 5. Chạy Media Server (Dành cho Live)
-```bash
-cd mediamtx
-./mediamtx.exe
-```
+Script này sẽ tự động mở các cửa sổ command prompt riêng biệt để chạy:
+- **MediaMTX Server:** Xử lý luồng trực tiếp.
+- **Backend:** Spring Boot API.
+- **Frontend:** Giao diện React (Vite).
+- **Cloudflare Tunnel:** (Tùy chọn) Để tạo link public nếu cần.
 
 ---
 
@@ -65,3 +58,4 @@ cd mediamtx
 - `frontend/`: Các component React cho giao diện người dùng.
 - `mediamtx/`: Công cụ được sử dụng để xử lý dữ liệu luồng trực tiếp.
 - `videos/`: Thư mục lưu trữ các video đã tải lên.
+
