@@ -1,6 +1,6 @@
 # 🎥 Ứng dụng Streaming Video Đơn Giản
 
-Một dự án full-stack cơ bản để tìm hiểu về streaming video và phát trực tiếp (live broadcasting). Dự án này sử dụng Spring Boot cho backend và React cho frontend.
+Một dự án cơ bản để tìm hiểu về streaming video và phát trực tiếp (live broadcasting). Dự án này sử dụng Spring Boot cho backend và React cho frontend.
 
 ---
 
@@ -29,7 +29,7 @@ Một dự án full-stack cơ bản để tìm hiểu về streaming video và p
 
 ## Cách Chạy Dự Án
 
-### 1. Điều kiện tiên quyết
+### 1. Điều kiện cần thiết
 - Cài đặt **Java 21**.
 - Cài đặt **Node.js** (để chạy frontend).
 - Cài đặt **MySQL**.
